@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.awt.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping("/thymeleaf")
@@ -36,5 +38,22 @@ public class ThymeleafController {
         model.addAttribute("itemDto", itemDto);
 
         return "thymeleaf/ex2";
+    }
+
+    @GetMapping(value = {"/ex3", "/ex4"})
+    public void ex3(Model model){
+
+        List<ItemDto> list = new ArrayList<>();
+
+        for (int i = 1; i <= 10; i++) {
+            ItemDto itemDto = ItemDto.builder()
+                    .itemNm("테스트 상품" + i)
+                    .price(10000 * i)
+                    .itemDetail("테스트 상품 상세 설명" + i)
+                    .regTime(LocalDateTime.now())
+                    .build();
+            list.add(itemDto);
+        }
+        model.addAttribute("list", list);
     }
 }

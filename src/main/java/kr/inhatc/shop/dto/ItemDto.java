@@ -28,6 +28,7 @@ public class ItemDto {
     private String itemSellStatus;
 
     private LocalDateTime regTime;      // 등록일 (추후 제거)
+
     private LocalDateTime updateTime;   // 수정일 (추후 제거)
 
 }
