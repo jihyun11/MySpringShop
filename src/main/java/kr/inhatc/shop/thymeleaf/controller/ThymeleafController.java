@@ -1,10 +1,12 @@
 package kr.inhatc.shop.thymeleaf.controller;
 
 import kr.inhatc.shop.dto.ItemDto;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.awt.*;
 import java.time.LocalDateTime;
@@ -13,6 +15,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/thymeleaf")
+@Slf4j
 public class ThymeleafController {
 
     @GetMapping("/ex1")
@@ -55,5 +58,13 @@ public class ThymeleafController {
             list.add(itemDto);
         }
         model.addAttribute("list", list);
+    }
+
+    @GetMapping("/ex5")
+    public String ex5(Model model, String param1, @RequestParam("param2") String p2){
+        log.info("p1 : " + param1 + ", p2 : " + p2);
+        model.addAttribute("param1", param1);
+        model.addAttribute("param2", p2);
+        return "thymeleaf/ex5";
     }
 }
