@@ -47,9 +47,10 @@ class ItemRepositoryTest {
     void findByItemNm() {
         createItemList();
         List<Item> itemList = itemRepository.findByItemNm("테스트 상품1");
-        for (Item item : itemList) {
-            System.out.println(item);
-        }
+        itemList.forEach((item -> System.out.println(item))); //밑에 foreach문이랑 똑같음
+//        for (Item item : itemList) {
+//            System.out.println(item);
+//        }
     }
 
     @Test
