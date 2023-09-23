@@ -96,7 +96,7 @@ class ItemRepositoryTest {
     }
 
     @Test
-    @DisplayName("Native 쿼리")
+    @DisplayName("Native 쿼리") //JPQL 쿼리와 Native 쿼리의 차이점 알기 (관점의 차이가 있음)
     public void findByItemDetailNativeTest(){
         createItemList();
 
@@ -114,6 +114,7 @@ class ItemRepositoryTest {
 
         JPAQueryFactory queryFactory = new JPAQueryFactory(em);
         QItem qItem = QItem.item;
+
 
         List<Item> itemList = queryFactory.select(qItem)
                 .from(qItem)

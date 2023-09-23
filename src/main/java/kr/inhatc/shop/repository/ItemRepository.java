@@ -7,6 +7,7 @@ import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Map;
 
 public interface ItemRepository extends JpaRepository<Item, Long>,
         QuerydslPredicateExecutor<Item> {
@@ -39,6 +40,7 @@ public interface ItemRepository extends JpaRepository<Item, Long>,
 
 
     //4번 문제
+
 
 
 }
