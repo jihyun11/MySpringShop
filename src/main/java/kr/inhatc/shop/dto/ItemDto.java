@@ -8,11 +8,15 @@ import jakarta.persistence.Lob;
 import kr.inhatc.shop.constant.ItemSellStatus;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
 @Data
 @Builder
+@Getter
+@Setter
 public class ItemDto {
 
     private Long id;             // 상품 코드
