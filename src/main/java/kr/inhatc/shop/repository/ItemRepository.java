@@ -21,7 +21,7 @@ public interface ItemRepository extends JpaRepository<Item, Long>,
     List<Item> findByPriceLessThanOrderByPriceDesc(Integer price);
 
     //과제 1번
-    List<Item> findByPriceIsGreaterThanEqualAndItemNmContains(int price, String itemNm);
+    List<Item> findByStockNumberIsGreaterThanEqualAndItemNmContains(int stockNumber, String itemNm);
 
     //JPQL
     @Query("select i from Item i where i.itemDetail like %:itemDetail% order by i.price desc")
@@ -31,12 +31,12 @@ public interface ItemRepository extends JpaRepository<Item, Long>,
     List<Item> findByItemDetailNative(@Param("itemDetail") String itemDetail);
 
     //2번 문제
-    @Query("SELECT i FROM Item i WHERE i.price >= :price AND i.itemNm LIKE %:itemNm%")
-    List<Item> findItemsByPriceAndItemName(int price, String itemNm);
+    @Query("SELECT i FROM Item i WHERE i.stockNumber >= :stockNumber AND i.itemNm LIKE %:itemNm%")
+    List<Item> findItemsByStockNumberAndItemName(int stockNumber, String itemNm);
 
     //3번 문제
-    @Query(value = "SELECT * FROM item i WHERE i.price >= :price AND item_nm LIKE %:itemNm%", nativeQuery = true)
-    List<Item> findItemsByPriceAndItemNameNative(@Param("price") int price, @Param("itemNm") String itemNm);
+    @Query(value = "SELECT * FROM item i WHERE i.number >= :stockNumber AND item_nm LIKE %:itemNm%", nativeQuery = true)
+    List<Item> findItemsByStockNumberAndItemNameNative(@Param("stockNumber") int stockNumber, @Param("itemNm") String itemNm);
 
 
     //4번 문제
