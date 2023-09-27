@@ -172,11 +172,13 @@ class ItemRepositoryTest {
         builder.and(item.itemDetail.like("%" + itemDetail + "%"));
         builder.and(item.price.gt(price));
 
-        if(StringUtils.equals(itemSellStatus, ItemSellStatus.SELL)){
+        if(StringUtils.equals(itemSellStatus, ItemSellStatus.SELL)){ //StringUtils를 쓰면 문자열 equqls 쉽게 쓰기 가능
             builder.and(item.itemSellStatus.eq(ItemSellStatus.SELL));
-        }
+        } //sell과 같으면 (itemsellstatus.sell) 과 같은 애들에 대해서 뽑아옴
+        //상품설명에는 테스트가 붙으면서, 가격은 10004보다 크면서, sell 상태인 애들만 뽑아오는 조건식
 
         Pageable pageable = Pageable.ofSize(5).withPage(0);     // RageRequest.of(0, 5);
+        //Pageable이 인터페이스라 객체를 못만들음. 그래서 바로 .ofSize() 쓰면됨
 
         itemRepository.findAll(builder, pageable).forEach(i -> System.out.println(i));        
         itemRepository.findAll(builder, pageable).forEach(System.out::println);
@@ -187,8 +189,11 @@ class ItemRepositoryTest {
 
         List<Item> content = all.getContent();
         content.forEach(System.out::println);
-        for (Item item2 : content) {
-            System.out.println(item2);
-        }
+        content.stream().forEach((e) -> {
+            System.out.println(e);
+        });
+//        for (Item item2 : content) {
+//            System.out.println(item2);
+//        }
     }
 }
