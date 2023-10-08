@@ -43,6 +43,14 @@ public class ThymeleafController {
         return "thymeleaf/ex2";
     }
 
+    @GetMapping("/ex3")
+    public String ex33(String param1, String param2, Model model){
+        model.addAttribute("param1", param1);
+        model.addAttribute("param2", param2);
+
+        return "thymeleaf/ex3";
+    }
+
     @GetMapping(value = {"/ex3", "/ex4"})
     public void ex3(Model model){
 
